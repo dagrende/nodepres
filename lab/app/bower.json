@@ -1,0 +1,22 @@
+{
+  "name": "ttt",
+  "version": "0.0.0",
+  "homepage": "https://github.com/dagrende/nodepres",
+  "authors": [
+    "dag <dag.rende@find-out.se>"
+  ],
+  "description": "TicTacToe over the net",
+  "main": "tic-tac-toe.html",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.2.16",
+    "angular-route": "~1.2.16"
+  }
+}

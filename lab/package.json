@@ -1,0 +1,16 @@
+{
+  "name": "ttt",
+  "version": "0.0.0",
+  "description": "tic-tac-toe server",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "~4.2.0",
+    "socket.io": "~0.9.16"
+  }
+}

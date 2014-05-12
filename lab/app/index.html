@@ -1,4 +1,4 @@
-<html ng-app>
+<html ng-app="TTTApp">
 	<head>
 		<title></title>
 		<style>
@@ -11,10 +11,10 @@
 	<body ng-controller="BoardCtrl">
 		<table>
 			<tr ng-repeat="row in [0,1,2]">
-				<td ng-repeat="col in [0,1,2]" ng-click="clickMove(0, 0)"><img ng-src="{{imgByIndex(row, col)}}"></td>
+				<td ng-repeat="col in [0,1,2]" ng-click="boardClick(row, col)"><img ng-src="{{imgByIndex(row, col)}}"></td>
 			</tr>
 		</table>
 	</body>
 	<script type="text/javascript" src="bower_components/angular/angular.js"></script>
-	<script type="text/javascript" src="BoardCtrl.js"></script>
+	<script type="text/javascript" src="main.js"></script>
 </html>
