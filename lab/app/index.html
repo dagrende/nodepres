@@ -2,19 +2,33 @@
 	<head>
 		<title></title>
 		<style>
-			td {
+			td.board-cell {
 				background-color: #eeeeee;
 				padding: 0.5em;
+			}
+			td.c {
+				text-align: center;
+			}
+			td.r {
+				text-align: right;
 			}
 		</style>
 	</head>
 	<body ng-controller="BoardCtrl">
+		<div>My name: <input ng-model="myName" type="text"></div>
+		<div><input ng-click="play()" type="button" value="Play!"></div>
 		<table>
+			<tr>
+				<td>{{sideLetter(mySide)}} Me</td>
+				<td class="c">{{gameStatus}}</td>
+				<td class="r">{{otherNameSide}}</td>
+			</tr>
 			<tr ng-repeat="row in [0,1,2]">
-				<td ng-repeat="col in [0,1,2]" ng-click="boardClick(row, col)"><img ng-src="{{imgByIndex(row, col)}}"></td>
+				<td class="board-cell" ng-repeat="col in [0,1,2]" ng-click="boardClick(row, col)"><img ng-src="{{imgByIndex(row, col)}}"></td>
 			</tr>
 		</table>
 	</body>
 	<script type="text/javascript" src="bower_components/angular/angular.js"></script>
 	<script type="text/javascript" src="main.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
 </html>
