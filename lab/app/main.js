@@ -7,22 +7,8 @@ angular.module('TTTApp', [])
 	$scope.gameStatus = '';
 
 	var socket = io.connect();
-  	socket.on('turn', function (data) {
-		console.log('turn', data);
-		$timeout(function() {
-			turn(otherside($scope.mySide), data.row, data.col);
-			$scope.$apply();
-		});
-	});
 
-	function clearBoard() {
-		$scope.board = [
-			[0,0,0],
-			[0,0,0],
-			[0,0,0]];
-	}
-
-  	socket.on('play', function (data) {
+  	socket.on('start-game', function (data) {
 		$timeout(function() {
 			console.log('play from ',data.name,'side',data.side);
 	  		$scope.mySide = otherside(data.side);
@@ -32,6 +18,21 @@ angular.module('TTTApp', [])
   			clearBoard();
 		});
   	});
+
+  	socket.on('turn', function (data) {
+		console.log('turn', data);
+		$timeout(function() {
+			turn(otherside($scope.mySide), data.row, data.col);
+			$scope.$apply();
+		});
+	});
+
+	function clearBoard() {
+		$scope.board = [	// 0=empty, 1=O, 2=X
+			[0,0,0],
+			[0,0,0],
+			[0,0,0]];
+	}
 
 
 	function otherside(side) {
@@ -44,7 +45,8 @@ angular.module('TTTApp', [])
 
 	$scope.play = function() {
 		clearBoard();
-		socket.emit('play', {name:$scope.myName, side:$scope.mySide});
+  		$scope.gameStatus = 'Game';
+		socket.emit('want-to-play', {name:$scope.myName, side:$scope.mySide});
 	};
 
 	$scope.boardClick = function(row, col) {

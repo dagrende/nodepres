@@ -12,11 +12,14 @@
 			td.r {
 				text-align: right;
 			}
+			th {
+				padding-left: 2em;
+				padding-right: 2em;
+			}
 		</style>
 	</head>
 	<body ng-controller="BoardCtrl">
-		<div>My name: <input ng-model="myName" type="text"></div>
-		<div><input ng-click="play()" type="button" value="Play!"></div>
+		<div>I <input ng-model="myName" type="text"><input ng-disabled="myName == ''" ng-click="play()" type="button" value="Want to play!"></div>
 		<table>
 			<tr>
 				<td>{{sideLetter(mySide)}} Me</td>
